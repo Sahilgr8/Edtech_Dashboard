@@ -16,10 +16,17 @@ Vue.use(Vuex)
 
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
-    modules: {
-      // example
+    // modules: {
+    //   // example
+    // },
+    state:{
+      authenticated:false
     },
-
+    mutations:{
+      setAuthentication(state,status){
+        state.authenticated=status
+      }
+    },
     // enable strict mode (adds overhead!)
     // for dev mode only
     strict: process.env.DEBUGGING

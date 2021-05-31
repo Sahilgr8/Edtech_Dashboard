@@ -8,6 +8,7 @@ module.exports = {
                 88:'22rem',
                 96:'24rem',
                 98:'26rem',
+                13:'3.15rem'
             },
             width:{
                 72:'19rem',
@@ -24,6 +25,9 @@ module.exports = {
                 'lg':'1024px',
                 'xl':'1241px'
           
+            },
+            fontSize:{
+                'card':'13px',
             }
         }
     },

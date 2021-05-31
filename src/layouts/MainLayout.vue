@@ -18,25 +18,110 @@
         <div></div>
       </q-toolbar>
     </q-header>
-
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
-      bordered
-      content-class="bg-grey-1"
+      :width="230"
+      class=" tw-bg-white tw-text-gray-800"
     >
+    <div class=" bg-primary tw-text-white tw-h-13 tw-text-lg tw-font-medium tw-text-center tw-pt-3 tw-border-r tw-border-white"><router-link to="/">INCENTIUS</router-link></div>
       <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
-          Essential Links
-        </q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
+        <q-item
+        clickable
+        exact
+        class=" hover:tw-text-blue-700"
+        to="/admin"
+      >
+              <q-item-section
+                avatar
+              >
+                <q-icon name="badge" />
+              </q-item-section>
+
+              <q-item-section>
+                <q-item-label>Teacher Details</q-item-label>
+              </q-item-section>
+      </q-item>
+          <q-item
+        clickable
+        exact
+        class=" hover:tw-text-blue-700"
+        to="/studentDetails"
+      >
+              <q-item-section
+                avatar
+              >
+                <q-icon name="people_alt" />
+              </q-item-section>
+
+              <q-item-section>
+                <q-item-label>Student Details</q-item-label>
+              </q-item-section>
+        </q-item>
+        <!-- <q-item
+        clickable
+        exact
+        class=" hover:tw-text-blue-700"
+        to="/buckets"
+      >
+              <q-item-section
+                avatar
+              >
+                <q-icon name="format_color_fill" />
+              </q-item-section>
+
+              <q-item-section>
+                <q-item-label>Buckets</q-item-label>
+              </q-item-section>
+        </q-item>
+        <q-item
+        clickable
+        class=" hover:tw-text-blue-700"
+        to="/filemaster"
+      >
+              <q-item-section
+                avatar
+              >
+                <q-icon name="source" />
+              </q-item-section>
+
+              <q-item-section>
+                <q-item-label>File Master</q-item-label>
+              </q-item-section>
+              
+        </q-item>
+        <q-item
+        clickable
+        class=" hover:tw-text-blue-700"
+        to="/mdm"
+      >
+              <q-item-section
+                avatar
+              >
+                <q-icon name="rate_review" />
+              </q-item-section>
+
+              <q-item-section>
+                <q-item-label>MDM Review</q-item-label>
+              </q-item-section>
+              
+        </q-item>
+        <q-item
+        clickable
+        class=" hover:tw-text-blue-700"
+        to="/mdmrequest"
+      >
+              <q-item-section
+                avatar
+              >
+                <q-icon name="published_with_changes" />
+              </q-item-section>
+
+              <q-item-section>
+                <q-item-label>Change Request</q-item-label>
+              </q-item-section>
+              
+        </q-item> -->
       </q-list>
     </q-drawer>
 
@@ -47,60 +132,13 @@
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
 
-const linksData = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-];
 
 export default {
   name: 'MainLayout',
-  components: { EssentialLink },
   data () {
     return {
       leftDrawerOpen: false,
-      essentialLinks: linksData
     }
   }
 }

@@ -88,13 +88,14 @@ export default {
                         message: 'Invalid Credentials ! Please try again .'
                     })
         }else{
+          this.$store.commit("setAuthentication",true)
+          this.$router.replace({name:'admin'})
           this.$q.notify({
                         color: 'green',
                         textColor: 'white',
                         icon: 'verified',
                         message: 'Login Successful'
                     })
-          this.$router.push('/admin')
         }
       },
       validateStudent(){
@@ -106,13 +107,14 @@ export default {
                         message: 'Invalid Credentials ! Please try again .'
                     })
         }else{
+          this.$store.commit("setAuthentication",true)
+          this.$router.replace({name:'student'})
           this.$q.notify({
                         color: 'green',
                         textColor: 'white',
                         icon: 'verified',
                         message: 'Login Successful'
                     })
-          this.$router.push('/student')
         }
       }
     }
