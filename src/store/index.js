@@ -27,6 +27,11 @@ export default function (/* { ssrContext } */) {
         state.authenticated=status
       }
     },
+    getters:{
+      getStatus:state=>{
+        return state.authenticated
+      }
+    },
     // enable strict mode (adds overhead!)
     // for dev mode only
     strict: process.env.DEBUGGING

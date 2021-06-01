@@ -1,7 +1,7 @@
 <template>
       <q-layout class=" tw-bg-gray-300">
         <q-page class=" flex flex-center">
-          <q-card class=" tw-h-98 xs:tw-w-70 sm::tw-w-96 md:tw-w-100 tw-shadow-md">
+          <q-card class=" tw-h-98 xs:tw-w-70 md:tw-w-100 tw-shadow-md">
             <div class=" tw-text-center tw-text-2xl tw-font-medium tw-p-4 tw-bg-blue-600 tw-text-white"><q-icon name="school" class=" tw-mr-2" size="40px"/>EDTECH LOGIN</div>
               <q-tabs
                 v-model="tab"
