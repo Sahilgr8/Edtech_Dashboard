@@ -5,15 +5,16 @@ const routes = [
     children: [
       { path: '',name:'admin', component: () => import('pages/Admin.vue')
     },
-    { path: '/studentDetails',name:'studentDetails', component: () => import('pages/Student.vue')}
+    { path: '/studentDetails',name:'studentDetails', component: () => import('pages/Student.vue')},
+    { path: '/adminAnalytics',name:'adminAnalytics', component: () => import('pages/AdminAnalytics.vue')},
     ]
   },
   {
     path: '/student',
     component: () => import('layouts/MainLayoutStudent.vue'),
     children: [
-      { path: '',name:'student', component: () => import('pages/Index.vue')
-        }
+      { path: '',name:'studentDashboard', component: () =>import('src/pages/StudentDashboard.vue')},
+      { path: '/studentAnalytics',name:'studentAnalytics', component: () => import('pages/StudentAnalytics.vue')},
     ]
   },
   {

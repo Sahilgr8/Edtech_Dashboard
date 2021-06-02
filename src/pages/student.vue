@@ -2,8 +2,8 @@
     <q-page class=" tw-bg-gray-300 tw-p-4">
         <q-table title="List Of Students" :data="data" :columns="columns" :rows-per-page-options="false">
             <template v-slot:top-right>
-                <q-btn icon="add" label="NEW STUDENT" @click="show1=true" color="primary" class=" tw-mr-4" flat/>
-                <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
+                <q-btn icon="add" label="NEW STUDENT" @click="show1=true" color="primary" class=" xs:tw-mt-2 md:tw-mt-0 tw-mr-4 xs:tw-ml-0" flat/>
+                <q-input borderless dense debounce="300" v-model="filter" class=" xs:tw-mt-2 md:tw-mt-0" placeholder="Search">
                     <template v-slot:append>
                         <q-icon name="search" />
                     </template>
@@ -68,7 +68,7 @@ export default {
             sclas:null,
             smob:'',
             sdiv:'',
-            classList:[1,2,3,4,5,6,7,8,9,10],
+            classList:['First','Second','Third','Fourth','Fifth'],
             divList:['A','B','C','D','E'],
             data:studentDetails,
             columns: [

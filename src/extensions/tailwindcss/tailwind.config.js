@@ -18,17 +18,20 @@ module.exports = {
                 100:'34rem',
                 98:'32.5rem'
             },
-            screens:{
-                'xs': '280px',
-                'sm': '375px',
-                'md': '768px',
-                'lg':'1024px',
-                'xl':'1241px'
-          
-            },
             fontSize:{
                 'card':'13px',
+            },
+            margin:{
+                14:'4rem'
             }
+        },
+        screens:{
+            'xs': '280px',
+            'sm': '375px',
+            'md': '768px',
+            'lg':'1024px',
+            'xl':'1241px'
+      
         }
     },
     

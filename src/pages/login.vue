@@ -108,7 +108,7 @@ export default {
                     })
         }else{
           this.$store.commit("setAuthentication",true)
-          this.$router.replace({name:'student'})
+          this.$router.replace({name:'studentDashboard'})
           this.$q.notify({
                         color: 'green',
                         textColor: 'white',

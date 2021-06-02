@@ -11,8 +11,8 @@
       :rows-per-page-options="false"
     >
       <template v-slot:top-right>
-          <q-btn icon="add" label="NEW TEACHER" color="primary" @click="show=true" class=" tw-mr-2" flat/>
-        <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
+          <q-btn icon="add" label="NEW TEACHER" color="primary" @click="show=true" class=" xs:tw-mt-2 md:tw-mt-0 tw-mr-2" flat/>
+        <q-input borderless dense debounce="300" class=" xs:tw-mt-2 md:tw-mt-0" v-model="filter" placeholder="Search">
           <template v-slot:append>
             <q-icon name="search" />
           </template>

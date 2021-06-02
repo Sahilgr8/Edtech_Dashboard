@@ -58,23 +58,23 @@
                 <q-item-label>Student Details</q-item-label>
               </q-item-section>
         </q-item>
-        <!-- <q-item
+        <q-item
         clickable
         exact
         class=" hover:tw-text-blue-700"
-        to="/buckets"
+        to="/adminAnalytics"
       >
               <q-item-section
                 avatar
               >
-                <q-icon name="format_color_fill" />
+                <q-icon name="analytics" />
               </q-item-section>
 
               <q-item-section>
-                <q-item-label>Buckets</q-item-label>
+                <q-item-label>Analytics</q-item-label>
               </q-item-section>
         </q-item>
-        <q-item
+        <!-- <q-item
         clickable
         class=" hover:tw-text-blue-700"
         to="/filemaster"
@@ -89,8 +89,8 @@
                 <q-item-label>File Master</q-item-label>
               </q-item-section>
               
-        </q-item>
-        <q-item
+        </q-item> -->
+        <!-- <q-item
         clickable
         class=" hover:tw-text-blue-700"
         to="/mdm"
@@ -105,8 +105,8 @@
                 <q-item-label>MDM Review</q-item-label>
               </q-item-section>
               
-        </q-item>
-        <q-item
+        </q-item> -->
+        <!-- <q-item
         clickable
         class=" hover:tw-text-blue-700"
         to="/mdmrequest"
