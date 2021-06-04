@@ -1,10 +1,10 @@
 <template>
     <q-page class=" tw-bg-gray-300">
         <div class=" tw-p-4">
-            <div class=" tw-flex tw-flex-row tw-justify-between"><div class=" tw-text-xl tw-font-bold tw-text-gray-800 tw-pl-3 tw-pt-2">ANALYTICS</div>
+            <div class=" tw-flex xs:tw-flex-col md:tw-flex-row tw-justify-between"><div class=" tw-text-xl tw-font-bold tw-text-gray-800 tw-pl-3 tw-pt-2">ANALYTICS</div>
             <div><q-select outlined dense v-model="subject" :options="subjects" @input="changeData()" class=" tw-mb-3 tw-w-40 tw-bg-white"/></div></div>
-            <div class=" tw-grid tw-grid-cols-2 tw-gap-4">
-            <div class=" tw-col-span-2"><q-table :columns="column" :data="performance_data" title="Test Performance" :rows-per-page-options="false">
+            <div class=" tw-grid xs:tw-grid-cols-1 xl:tw-grid-cols-2 tw-gap-4">
+            <div class=" xs:tw-col-span-1 xl:tw-col-span-2"><q-table :columns="column" :data="performance_data" title="Test Performance" :rows-per-page-options="false">
                 <template v-slot:body-cell-correct="props">
                     <q-td :props="props">
                         <q-badge class=" tw-bg-green-600">
@@ -19,8 +19,19 @@
                         </q-badge>
                     </q-td>
                 </template>
+                <template v-slot:body-cell-skipped="props">
+                    <q-td :props="props">
+                        <q-badge class=" tw-bg-blue-600">
+                            {{props.value}}
+                        </q-badge>
+                    </q-td>
+                </template>
             </q-table></div>
-                <div class=" tw-h-96"><q-card><q-card-section class=" tw-h-96"><IEcharts :option="performanceChart" :resizable="true"/></q-card-section></q-card></div>
+                <div class=" tw-h-96"><q-card><q-card-section class=" tw-h-96"><q-toolbar class=" tw--mt-2 tw--ml-2">
+                        <q-toolbar-title class=" tw-font-bold tw-text-gray-700">
+                           Overall Student Performance
+                        </q-toolbar-title>
+                    </q-toolbar><IEcharts class=" tw--mt-8" :option="performanceChart" :resizable="true"/></q-card-section></q-card></div>
                 <div v-if="subject!='ALL'"><q-card><q-card-section class=" tw-h-96"><IEcharts :option="testChart" :resizable="true"/></q-card-section></q-card></div>
                 <div v-else><q-card><q-card-section class=" tw-h-96"><AllTest :testData1="testData1" :testData2="testData2" :testData3="testData3" :testData4="testData4" :testData5="testData5" :testData6="testData6"/></q-card-section></q-card></div>
             </div>
@@ -53,16 +64,17 @@ export default {
                 format: val => `${val}`,
                 },
                 { name:'test', align: 'center', label: 'Tests', field: 'test'},
-                { name: 'Marks', label: 'Marks', field: 'Marks',align:'center',sortable:true},
+                { name: 'Marks', label: 'Marks %', field: 'Marks',align:'center',sortable:true},
                 { name: 'correct', label: 'No Of Correct Answers', field: 'correct',align:'center'},
-                { name: 'wrong', label: 'No Of Wrong Answers', field: 'wrong',align:'center'}
+                { name: 'wrong', label: 'No Of Wrong Answers', field: 'wrong',align:'center'},
+                { name: 'skipped', label: 'No Of Skipped Questions', field: 'skipped',align:'center'}
             ],
             performance_data:[],
-            data:[{test:'Test 1',subject:'Maths',Marks:60,correct:6,wrong:4},{test:'Test 2',subject:'Maths',Marks:50,correct:5,wrong:5},{test:'Test 3',subject:'Maths',Marks:45,correct:3,wrong:7},{test:'Test 4',subject:'Maths',Marks:90,correct:9,wrong:1},{test:'Test 5',subject:'Maths',Marks:80,correct:8,wrong:2},{test:'Test 6',subject:'Maths',Marks:100,correct:10,wrong:0},
-            {test:'Test 1',subject:'Science',Marks:70,correct:7,wrong:3},{test:'Test 2',subject:'Science',Marks:90,correct:9,wrong:1},{test:'Test 3',subject:'Science',Marks:40,correct:4,wrong:6},
-            {test:'Test 1',subject:'English',Marks:90,correct:9,wrong:1},{test:'Test 2',subject:'English',Marks:70,correct:7,wrong:3},{test:'Test 3',subject:'English',Marks:55,correct:5,wrong:5},{test:'Test 4',subject:'English',Marks:100,correct:10,wrong:0},{test:'Test 5',subject:'English',Marks:65,correct:6,wrong:4},
-            {test:'Test 1',subject:'Hindi',Marks:90,correct:9,wrong:1},{test:'Test 2',subject:'Hindi',Marks:75,correct:8,wrong:2},
-            {test:'Test 1',subject:'Social Studies',Marks:60,correct:7,wrong:3},{test:'Test 2',subject:'Social Studies',Marks:95,correct:9,wrong:1},{test:'Test 3',subject:'Social Studies',Marks:75,correct:7,wrong:3}]
+            data:[{test:'Test 1',subject:'Maths',Marks:60,correct:6,wrong:4,skipped:2},{test:'Test 2',subject:'Maths',Marks:50,correct:5,wrong:5,skipped:2},{test:'Test 3',subject:'Maths',Marks:45,correct:4,wrong:7,skipped:1},{test:'Test 4',subject:'Maths',Marks:90,correct:10,wrong:1,skipped:1},{test:'Test 5',subject:'Maths',Marks:80,correct:8,wrong:3,skipped:1},{test:'Test 6',subject:'Maths',Marks:100,correct:12,wrong:0,skipped:0},
+            {test:'Test 1',subject:'Science',Marks:70,correct:7,wrong:3,skipped:2},{test:'Test 2',subject:'Science',Marks:85,correct:9,wrong:0,skipped:3},{test:'Test 3',subject:'Science',Marks:40,correct:4,wrong:6,skipped:2},
+            {test:'Test 1',subject:'English',Marks:90,correct:9,wrong:2,skipped:1},{test:'Test 2',subject:'English',Marks:70,correct:7,wrong:3,skipped:2},{test:'Test 3',subject:'English',Marks:55,correct:5,wrong:5,skipped:2},{test:'Test 4',subject:'English',Marks:90,correct:10,wrong:2,skipped:0},{test:'Test 5',subject:'English',Marks:75,correct:8,wrong:4,skipped:0},
+            {test:'Test 1',subject:'Hindi',Marks:90,correct:9,wrong:1,skipped:2},{test:'Test 2',subject:'Hindi',Marks:75,correct:8,wrong:2,skipped:2},
+            {test:'Test 1',subject:'Social Studies',Marks:60,correct:7,wrong:1,skipped:4},{test:'Test 2',subject:'Social Studies',Marks:95,correct:10,wrong:1,skipped:1},{test:'Test 3',subject:'Social Studies',Marks:75,correct:7,wrong:3,skipped:2}]
         }
     },
     computed:{
@@ -88,7 +100,10 @@ export default {
                     }
                 }],
                 title:{
-                    text:'Overall Tests Performance'
+                    text:'19',
+                    subtext:'Total Tests',
+                    top:'center',
+                    right:'center'
                 },
                 legend: {
                     bottom:12

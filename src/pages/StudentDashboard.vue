@@ -28,33 +28,112 @@
           </q-card>
         </div>
         <div class=" xs:tw-col-span-1 md:tw-col-span-2">
-          <q-table title="TEST DETAILS" :columns="column" :data="data" hide-bottom/>
+          <q-card><q-card-section class=" tw-h-98"><IEcharts :option="barTests" :resizable="true"/></q-card-section></q-card>
+        </div>
+        <div class=" xs:tw-col-span-1 md:tw-col-span-2">
+          <q-card><q-card-section class=" tw-h-98"><IEcharts :option="avgMarks" :resizable="true"/></q-card-section></q-card>
         </div>
       </div>
   </q-page>
 </template>
 
 <script>
+
+import IEcharts from 'vue-echarts-v3/src/full.js';
+
 export default {
   name: 'PageIndex',
+  components:{IEcharts},
   data(){
     return{
       total_tests:0,
       attempted_tests:0,
-      column:[
-                {
-                name: 'subject',
-                required: true,
-                label: "Subjects",
-                align: 'left',
-                field: row => row.subject,
-                format: val => `${val}`,
-                },
-                { name:'total', align: 'center', label: 'Total Tests', field: 'total'},
-                { name: 'attempted', label: 'Total Tests attempted', field: 'attempted',align:'center'}
-            ],
       data:[{subject:'Maths',total:10,attempted:6},{subject:'Science',total:10,attempted:3},{subject:'English',total:6,attempted:5},{subject:'Hindi',total:6,attempted:2},{subject:'Social Studies',total:8,attempted:3}]
     }
+  },
+  computed:{
+    barTests(){
+            return{
+              media:[{query:{minWidth:256,maxWidth:320},option:{xAxis:{axisLabel:{interval:1}}}}],
+                title: {
+                    text: 'Test Details',
+                },
+                tooltip: {
+                },
+                legend: {
+                    data:['Total Tests','Total Tests Attempted'],
+                    top:'bottom'
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        data:['Maths','Science','English','Hindi','Social Studies'],
+                        axisLabel:{
+                            interval:0
+                        }
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                    }
+                ],
+                series: [
+                    {
+                        name:'Total Tests',
+                        type:'bar',
+                        data:[10,10,6,6,8]
+                    },{
+                        name:'Total Tests Attempted',
+                        type:'bar',
+                        data:[6,3,5,2,3]
+                    }
+                    // ,{
+                    //     name:'Average Marks',
+                    //     type:'bar',
+                    //     data:[70.83,72,71.66,80,77.5]
+                    // }
+                ]
+            }
+        },
+        avgMarks(){
+            return{
+              media:[{query:{minWidth:256,maxWidth:320},option:{xAxis:{axisLabel:{interval:1}}}}],
+                title: {
+                    text: 'AVG Marks',
+                },
+                tooltip: {
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        data:['Maths','Science','English','Hindi','Social Studies'],
+                        axisLabel:{
+                            interval:0
+                        }
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        min:0,
+                        max:100,
+                        interval:25,
+                        axisLabel:{
+                          formatter:'{value} %'
+                        }
+                    }
+                ],
+                color:['#73c0de'],
+                series: [
+                  {
+                        name:'Average Marks',
+                        type:'bar',
+                        data:[70.83,72,71.66,80,77.5],
+                    }
+                ]
+            }
+        }
   },
   created(){
     for(let i=0;i<this.data.length;i++){

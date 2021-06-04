@@ -1,6 +1,6 @@
 <template>
     <q-page class=" tw-bg-gray-300 tw-p-4">
-        <q-table title="List Of Students" :data="data" :columns="columns" :rows-per-page-options="false">
+        <q-table title="List Of Students" :data="data" :columns="columns" :pagination="pagination" :rows-per-page-options="false">
             <template v-slot:top-right>
                 <q-btn icon="add" label="NEW STUDENT" @click="show1=true" color="primary" class=" xs:tw-mt-2 md:tw-mt-0 tw-mr-4 xs:tw-ml-0" flat/>
                 <q-input borderless dense debounce="300" v-model="filter" class=" xs:tw-mt-2 md:tw-mt-0" placeholder="Search">
@@ -56,6 +56,9 @@ export default {
     name:'student',
     data(){
         return{
+            pagination:{
+                rowsPerPage:10
+            },
             show1:false,
             show:false,
             filter:'',

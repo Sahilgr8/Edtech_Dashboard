@@ -22,7 +22,8 @@
                         <q-toolbar-title class=" tw-font-bold tw-text-gray-700">
                            Test Details
                         </q-toolbar-title>
-                        <q-select @input="changeChartData()" dense outlined v-model="subChart" class=" tw-w-40" :options="subjects" />
+                        <q-select @input="changeChartData()" dense outlined v-model="classs" class=" tw-w-40" :options="classes" />
+                        <q-select @input="changeChartData()" dense outlined v-model="subChart" class=" tw-ml-2 tw-w-40" :options="subjects" />
                     </q-toolbar>
                     <div v-if="this.subChart!='ALL'">
                     <IEcharts class=" tw--mt-1" style="height:320px" :option="testBar" :resizable="true"/></div>
@@ -65,6 +66,7 @@ export default {
             // division:['ALL','A','B','C','D','E'],
             subjects:['ALL','Maths','Science','English','Hindi','Social Studies'],
             classes:['First','Second','Third','Fourth','Fifth'],
+            classs:'First',
             clas:'First',
             subject:'ALL',
             subChart:'ALL',
@@ -72,8 +74,7 @@ export default {
             subjectBot:'ALL',
             // div:'ALL',
             testData:[],
-            testData2:[],
-            testData3:[],
+            classData:[],
             columns: [
                 {
                 name: 'name',
@@ -110,6 +111,7 @@ export default {
     },
     methods:{
         changeData(){
+
             if(this.subject!='ALL' ){
                 if(this.subject=='Maths'){
                     this.top_students_data=this.all_data.sort((a,b)=>b.maths-a.maths).filter(e=>e.class==this.clas).slice(0,5)
@@ -144,75 +146,98 @@ export default {
             }
         },
         changeChartData(){
+            if(this.classs=='First'){
+                this.test1=[64.8,69.8,70.8,70.7,69.5]
+                this.test2=[70.4,70.1,70.3,70.2,71.1]
+                this.test3=[69.5,68.2,69,70.2,70.1]
+            }
+            else if(this.classs=='Second'){
+                this.test1=[74.6,82.3,66.7,90.3,74]
+                this.test2=[70.6,78.3,80.7,89.3,79]
+                this.test3=[71.6,86.3,69.7,94.3,80.3]
+            }else if(this.classs=='Third'){
+                this.test1=[79.6,87.3,62.7,92.3,79]
+                this.test2=[64.6,82.3,66.7,90.3,74]
+                this.test3=[74.6,87.3,86.7,90.3,64]
+            }else if(this.classs=='Fourth'){
+                this.test1=[64.6,62.3,66.7,70.3,74]
+                this.test2=[84.6,89.3,76.7,80.3,54]
+                this.test3=[64.6,72.3,86.7,70.3,64]
+            }else if(this.classs=='Fifth'){
+                this.test1=[84.6,82.3,66.7,90.3,74]
+                this.test2=[74.6,87.3,76.7,80.3,78]
+                this.test3=[63.6,81.3,69.7,84.3,83]
+            }
+            this.classData=this.data.filter(e=>e.class==this.classs)
                     if(this.subChart=='Maths'){
                         let d1=0
                         let d2=0
                         let d3=0
                         let d4=[]
-                        for(let i=0;i<this.data.length;i++){
-                            d1=d1+this.data[i].maths
-                            d2=d2+this.data[i].maths2
-                            d3=d3+this.data[i].maths3
+                        for(let i=0;i<this.classData.length;i++){
+                            d1=d1+this.classData[i].maths
+                            d2=d2+this.classData[i].maths2
+                            d3=d3+this.classData[i].maths3
                         }
-                        d4.push(d1/this.data.length)
-                            d4.push(d2/this.data.length)
-                            d4.push(d3/this.data.length)
+                        d4.push(d1/this.classData.length)
+                            d4.push(d2/this.classData.length)
+                            d4.push(d3/this.classData.length)
                             this.testData=d4
                     }else if(this.subChart=='Science'){
                             let d1=0
                             let d2=0
                             let d3=0
                             let d4=[]
-                            for(let i=0;i<this.data.length;i++){
-                            d1=d1+this.data[i].science
-                            d2=d2+this.data[i].science2
-                            d3=d3+this.data[i].science3
+                            for(let i=0;i<this.classData.length;i++){
+                            d1=d1+this.classData[i].science
+                            d2=d2+this.classData[i].science2
+                            d3=d3+this.classData[i].science3
                             }
-                            d4.push(d1/this.data.length)
-                            d4.push(d2/this.data.length)
-                            d4.push(d3/this.data.length)
+                            d4.push(d1/this.classData.length)
+                            d4.push(d2/this.classData.length)
+                            d4.push(d3/this.classData.length)
                             this.testData=d4
                         }else if(this.subChart=='English'){
                             let d1=0
                             let d2=0
                             let d3=0
                             let d4=[]
-                            for(let i=0;i<this.data.length;i++){
-                            d1=d1+this.data[i].english
-                            d2=d2+this.data[i].english2
-                            d3=d3+this.data[i].english3
+                            for(let i=0;i<this.classData.length;i++){
+                            d1=d1+this.classData[i].english
+                            d2=d2+this.classData[i].english2
+                            d3=d3+this.classData[i].english3
                             }
-                            d4.push(d1/this.data.length)
-                            d4.push(d2/this.data.length)
-                            d4.push(d3/this.data.length)
+                            d4.push(d1/this.classData.length)
+                            d4.push(d2/this.classData.length)
+                            d4.push(d3/this.classData.length)
                             this.testData=d4
                         }else if(this.subChart=='Hindi'){
                             let d1=0
                             let d2=0
                             let d3=0
                             let d4=[]
-                            for(let i=0;i<this.data.length;i++){
-                            d1=d1+this.data[i].hindi
-                            d2=d2+this.data[i].hindi2
-                            d3=d3+this.data[i].hindi3
+                            for(let i=0;i<this.classData.length;i++){
+                            d1=d1+this.classData[i].hindi
+                            d2=d2+this.classData[i].hindi2
+                            d3=d3+this.classData[i].hindi3
                             }
-                            d4.push(d1/this.data.length)
-                            d4.push(d2/this.data.length)
-                            d4.push(d3/this.data.length)
+                            d4.push(d1/this.classData.length)
+                            d4.push(d2/this.classData.length)
+                            d4.push(d3/this.classData.length)
                             this.testData=d4
                         }else if(this.subChart=='Social Studies'){
                             let d1=0
                             let d2=0
                             let d3=0
                             let d4=[]
-                            for(let i=0;i<this.data.length;i++){
-                                d1=d1+this.data[i].social
-                                d2=d2+this.data[i].social2
-                                d3=d3+this.data[i].social3
+                            for(let i=0;i<this.classData.length;i++){
+                                d1=d1+this.classData[i].social
+                                d2=d2+this.classData[i].social2
+                                d3=d3+this.classData[i].social3
                             }
-                            d4.push(d1/this.data.length)
-                            d4.push(d2/this.data.length)
-                            d4.push(d3/this.data.length)
+                            d4.push(d1/this.classData.length)
+                            d4.push(d2/this.classData.length)
+                            d4.push(d3/this.classData.length)
                             this.testData=d4
                         }
                 
@@ -240,6 +265,12 @@ export default {
                         }]
                     }
                 }],
+                title:{
+                    text:'200',
+                    subtext:'Total Students',
+                    top:'center',
+                    right:'center'
+                },
                 legend: {
                     bottom:12
                 },
@@ -248,11 +279,10 @@ export default {
                     {
                         name: 'Students Performance',
                         type: 'pie',
-                        radius: [48, 96],
+                        radius: [54, 100],
                         center: ['50%', '50%'],
                         label:{
                             show:true,
-                            // formatter:'{b} : {d}',
                             fontSize:14
                         },
                         data: [
@@ -367,40 +397,15 @@ export default {
         let sumEnglish1=0
         let sumSocial1=0
 
-        let sumMaths2=0
-        let sumScience2=0
-        let sumHindi2=0
-        let sumEnglish2=0
-        let sumSocial2=0
-
-        let sumMaths3=0
-        let sumScience3=0
-        let sumHindi3=0
-        let sumEnglish3=0
-        let sumSocial3=0
-
         let gd=0
         let bavg=0
         let aavg=0
-
         for(let i=0;i<this.data.length;i++){
             sumMaths1=sumMaths1+this.data[i].maths
             sumScience1=sumScience1+this.data[i].science
             sumHindi1=sumHindi1+this.data[i].hindi
             sumEnglish1=sumEnglish1+this.data[i].english
             sumSocial1=sumSocial1+this.data[i].social
-
-            sumMaths2=sumMaths2+this.data[i].maths2
-            sumScience2=sumScience2+this.data[i].science2
-            sumHindi2=sumHindi2+this.data[i].hindi2
-            sumEnglish2=sumEnglish2+this.data[i].english2
-            sumSocial2=sumSocial2+this.data[i].social2
-
-            sumMaths3=sumMaths3+this.data[i].maths3
-            sumScience3=sumScience3+this.data[i].science3
-            sumHindi3=sumHindi3+this.data[i].hindi3
-            sumEnglish3=sumEnglish3+this.data[i].english3
-            sumSocial3=sumSocial3+this.data[i].social3
 
             let dat={}
             dat["name"]=this.data[i].name
@@ -414,23 +419,9 @@ export default {
             dat["total"]=(this.data[i].maths+this.data[i].social+this.data[i].hindi+this.data[i].english+this.data[i].science)/5
             this.all_data.push(dat)
         }
-        this.test1.push(sumMaths1/this.data.length)
-        this.test1.push(sumScience1/this.data.length)
-        this.test1.push(sumHindi1/this.data.length)
-        this.test1.push(sumEnglish1/this.data.length)
-        this.test1.push(sumSocial1/this.data.length)
-
-        this.test2.push(sumMaths2/this.data.length)
-        this.test2.push(sumScience2/this.data.length)
-        this.test2.push(sumHindi2/this.data.length)
-        this.test2.push(sumEnglish2/this.data.length)
-        this.test2.push(sumSocial2/this.data.length)
-
-        this.test3.push(sumMaths3/this.data.length)
-        this.test3.push(sumScience3/this.data.length)
-        this.test3.push(sumHindi3/this.data.length)
-        this.test3.push(sumEnglish3/this.data.length)
-        this.test3.push(sumSocial3/this.data.length)
+        this.test1=[64.8,69.8,70.8,70.7,69.5]
+        this.test2=[70.4,70.1,70.3,70.2,71.1]
+        this.test3=[69.5,68.2,69,70.2,70.1]
 
         let avg1=(sumMaths1/this.data.length+sumScience1/this.data.length+sumHindi1/this.data.length+sumEnglish1/this.data.length+sumSocial1/this.data.length)/5
         for(let j=0;j<this.data.length;j++){
