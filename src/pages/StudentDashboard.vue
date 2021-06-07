@@ -88,11 +88,6 @@ export default {
                         type:'bar',
                         data:[6,3,5,2,3]
                     }
-                    // ,{
-                    //     name:'Average Marks',
-                    //     type:'bar',
-                    //     data:[70.83,72,71.66,80,77.5]
-                    // }
                 ]
             }
         },

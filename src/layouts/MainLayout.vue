@@ -40,7 +40,7 @@
       :width="230"
       class=" tw-bg-white tw-text-gray-800"
     >
-    <div class=" bg-primary tw-text-white tw-h-13 tw-text-lg tw-font-medium tw-text-center tw-pt-3 tw-border-r tw-border-white"><router-link to="/">INCENTIUS</router-link></div>
+    <div class=" bg-primary tw-text-white tw-h-13 tw-text-lg tw-font-medium tw-text-center tw-pt-3 tw-border-r tw-border-white">INCENTIUS</div>
       <q-list>
         <q-item
         clickable
@@ -90,54 +90,6 @@
                 <q-item-label>Analytics</q-item-label>
               </q-item-section>
         </q-item>
-        <!-- <q-item
-        clickable
-        class=" hover:tw-text-blue-700"
-        to="/filemaster"
-      >
-              <q-item-section
-                avatar
-              >
-                <q-icon name="source" />
-              </q-item-section>
-
-              <q-item-section>
-                <q-item-label>File Master</q-item-label>
-              </q-item-section>
-              
-        </q-item> -->
-        <!-- <q-item
-        clickable
-        class=" hover:tw-text-blue-700"
-        to="/mdm"
-      >
-              <q-item-section
-                avatar
-              >
-                <q-icon name="rate_review" />
-              </q-item-section>
-
-              <q-item-section>
-                <q-item-label>MDM Review</q-item-label>
-              </q-item-section>
-              
-        </q-item> -->
-        <!-- <q-item
-        clickable
-        class=" hover:tw-text-blue-700"
-        to="/mdmrequest"
-      >
-              <q-item-section
-                avatar
-              >
-                <q-icon name="published_with_changes" />
-              </q-item-section>
-
-              <q-item-section>
-                <q-item-label>Change Request</q-item-label>
-              </q-item-section>
-              
-        </q-item> -->
       </q-list>
     </q-drawer>
 

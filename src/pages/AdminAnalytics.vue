@@ -22,8 +22,8 @@
                         <q-toolbar-title class=" tw-font-bold tw-text-gray-700">
                            Test Details
                         </q-toolbar-title>
-                        <q-select @input="changeChartData()" dense outlined v-model="classs" class=" tw-w-40" :options="classes" />
-                        <q-select @input="changeChartData()" dense outlined v-model="subChart" class=" tw-ml-2 tw-w-40" :options="subjects" />
+                        <q-select @input="changeChartData()" label="Class" dense outlined v-model="classs" class=" tw-w-40" :options="classes" />
+                        <q-select @input="changeChartData()" label="Subjects" dense outlined v-model="subChart" class=" tw-ml-2 tw-w-40" :options="subjects" />
                     </q-toolbar>
                     <div v-if="this.subChart!='ALL'">
                     <IEcharts class=" tw--mt-1" style="height:320px" :option="testBar" :resizable="true"/></div>
