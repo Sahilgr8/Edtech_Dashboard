@@ -1,6 +1,6 @@
 # EdTech (edtech-dashboard)
 
-A Quasar Framework app
+To run the dashboard on your localhost, follow the below steps:-
 
 ## Install the dependencies
 ```bash
@@ -11,16 +11,11 @@ npm install
 ```bash
 quasar dev
 ```
+## Data used in this dashboard :-
+Tab Name              | Json File Name
+--------------------- | -------------
+AdminAnalytics        | assets/student_details.json
+allChart              | assets/student_details.json
+ 
 
-### Lint the files
-```bash
-npm run lint
-```
-
-### Build the app for production
-```bash
-quasar build
-```
-
-### Customize the configuration
-See [Configuring quasar.conf.js](https://v1.quasar.dev/quasar-cli/quasar-conf-js).
+The data for the different tabs are used according to different json files as mentioned above and the data for the rest of the tabs which are not mentioned above are hardcoded.
